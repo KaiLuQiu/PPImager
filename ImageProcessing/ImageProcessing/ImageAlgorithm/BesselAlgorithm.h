@@ -11,14 +11,17 @@
 #define BesselAlgorithm_H
 #include <stdio.h>
 #include <vector>
+#include "ImageCommon.h"
 
+NS_IMAGE_BEGIN
 class BesselAlgorithm {
 public:
     double InvertL(float t, float l, float A, float B, float C);
 private:
     double S(float t, float A, float B, float C);
     double L(float t, float A, float B, float C);
-}
+};
 
+NS_IMAGE_END
 
 #endif // BesselAlgorithm_H

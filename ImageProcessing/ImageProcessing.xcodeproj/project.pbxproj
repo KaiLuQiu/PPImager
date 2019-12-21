@@ -15,6 +15,14 @@
 		36C9002C238EB8A2007C4F89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C9002B238EB8A2007C4F89 /* main.m */; };
 		36C90036238EB8A2007C4F89 /* ImageProcessingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C90035238EB8A2007C4F89 /* ImageProcessingTests.m */; };
 		36C90041238EB8A2007C4F89 /* ImageProcessingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C90040238EB8A2007C4F89 /* ImageProcessingUITests.m */; };
+		36FAD18323ADC7E9007B4144 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FAD18223ADC7E8007B4144 /* OpenGLES.framework */; };
+		36FAD1A523AE4CFE007B4144 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19323AE4CFD007B4144 /* ImageHelper.m */; };
+		36FAD1A623AE4CFE007B4144 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19523AE4CFD007B4144 /* DrawView.m */; };
+		36FAD1A723AE4CFE007B4144 /* DrawingPenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19823AE4CFD007B4144 /* DrawingPenController.m */; };
+		36FAD1A823AE4CFE007B4144 /* Kmeans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19B23AE4CFE007B4144 /* Kmeans.cpp */; };
+		36FAD1A923AE4CFE007B4144 /* BesselAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19D23AE4CFE007B4144 /* BesselAlgorithm.cpp */; };
+		36FAD1AA23AE4CFE007B4144 /* GLProgramManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD1A123AE4CFE007B4144 /* GLProgramManager.cpp */; };
+		36FAD1AB23AE4CFE007B4144 /* GLTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD1A223AE4CFE007B4144 /* GLTools.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +59,22 @@
 		36C9003C238EB8A2007C4F89 /* ImageProcessingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageProcessingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C90040238EB8A2007C4F89 /* ImageProcessingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageProcessingUITests.m; sourceTree = "<group>"; };
 		36C90042238EB8A2007C4F89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36FAD18223ADC7E8007B4144 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		36FAD19223AE4CFD007B4144 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
+		36FAD19323AE4CFD007B4144 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
+		36FAD19523AE4CFD007B4144 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
+		36FAD19623AE4CFD007B4144 /* DrawingPenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingPenController.h; sourceTree = "<group>"; };
+		36FAD19723AE4CFD007B4144 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
+		36FAD19823AE4CFD007B4144 /* DrawingPenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingPenController.m; sourceTree = "<group>"; };
+		36FAD19A23AE4CFE007B4144 /* Kmeans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kmeans.h; sourceTree = "<group>"; };
+		36FAD19B23AE4CFE007B4144 /* Kmeans.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Kmeans.cpp; sourceTree = "<group>"; };
+		36FAD19C23AE4CFE007B4144 /* BesselAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BesselAlgorithm.h; sourceTree = "<group>"; };
+		36FAD19D23AE4CFE007B4144 /* BesselAlgorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BesselAlgorithm.cpp; sourceTree = "<group>"; };
+		36FAD19F23AE4CFE007B4144 /* ImageCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCommon.h; sourceTree = "<group>"; };
+		36FAD1A123AE4CFE007B4144 /* GLProgramManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLProgramManager.cpp; sourceTree = "<group>"; };
+		36FAD1A223AE4CFE007B4144 /* GLTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLTools.cpp; sourceTree = "<group>"; };
+		36FAD1A323AE4CFE007B4144 /* GLTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTools.h; sourceTree = "<group>"; };
+		36FAD1A423AE4CFE007B4144 /* GLProgramManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgramManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36FAD18323ADC7E9007B4144 /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,10 +106,15 @@
 		36C90010238EB89E007C4F89 = {
 			isa = PBXGroup;
 			children = (
+				36FAD19923AE4CFE007B4144 /* ImageAlgorithm */,
+				36FAD19E23AE4CFE007B4144 /* ImageCommon */,
+				36FAD1A023AE4CFE007B4144 /* OpenGLUitls */,
+				36FAD18F23AE4CFD007B4144 /* platform */,
 				36C9001B238EB89E007C4F89 /* ImageProcessing */,
 				36C90034238EB8A2007C4F89 /* ImageProcessingTests */,
 				36C9003F238EB8A2007C4F89 /* ImageProcessingUITests */,
 				36C9001A238EB89E007C4F89 /* Products */,
+				36FAD18123ADC7E8007B4144 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +160,85 @@
 				36C90042238EB8A2007C4F89 /* Info.plist */,
 			);
 			path = ImageProcessingUITests;
+			sourceTree = "<group>";
+		};
+		36FAD18123ADC7E8007B4144 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD18223ADC7E8007B4144 /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		36FAD18F23AE4CFD007B4144 /* platform */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD19023AE4CFD007B4144 /* ios */,
+			);
+			name = platform;
+			path = ImageProcessing/platform;
+			sourceTree = "<group>";
+		};
+		36FAD19023AE4CFD007B4144 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD19423AE4CFD007B4144 /* Scrawl */,
+				36FAD19123AE4CFD007B4144 /* utils */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		36FAD19123AE4CFD007B4144 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD19223AE4CFD007B4144 /* ImageHelper.h */,
+				36FAD19323AE4CFD007B4144 /* ImageHelper.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		36FAD19423AE4CFD007B4144 /* Scrawl */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD19523AE4CFD007B4144 /* DrawView.m */,
+				36FAD19623AE4CFD007B4144 /* DrawingPenController.h */,
+				36FAD19723AE4CFD007B4144 /* DrawView.h */,
+				36FAD19823AE4CFD007B4144 /* DrawingPenController.m */,
+			);
+			path = Scrawl;
+			sourceTree = "<group>";
+		};
+		36FAD19923AE4CFE007B4144 /* ImageAlgorithm */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD19A23AE4CFE007B4144 /* Kmeans.h */,
+				36FAD19B23AE4CFE007B4144 /* Kmeans.cpp */,
+				36FAD19C23AE4CFE007B4144 /* BesselAlgorithm.h */,
+				36FAD19D23AE4CFE007B4144 /* BesselAlgorithm.cpp */,
+			);
+			name = ImageAlgorithm;
+			path = ImageProcessing/ImageAlgorithm;
+			sourceTree = "<group>";
+		};
+		36FAD19E23AE4CFE007B4144 /* ImageCommon */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD19F23AE4CFE007B4144 /* ImageCommon.h */,
+			);
+			name = ImageCommon;
+			path = ImageProcessing/ImageCommon;
+			sourceTree = "<group>";
+		};
+		36FAD1A023AE4CFE007B4144 /* OpenGLUitls */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD1A123AE4CFE007B4144 /* GLProgramManager.cpp */,
+				36FAD1A223AE4CFE007B4144 /* GLTools.cpp */,
+				36FAD1A323AE4CFE007B4144 /* GLTools.h */,
+				36FAD1A423AE4CFE007B4144 /* GLProgramManager.h */,
+			);
+			name = OpenGLUitls;
+			path = ImageProcessing/OpenGLUitls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +372,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				36C90021238EB89E007C4F89 /* ViewController.m in Sources */,
+				36FAD1A923AE4CFE007B4144 /* BesselAlgorithm.cpp in Sources */,
 				36C9002C238EB8A2007C4F89 /* main.m in Sources */,
+				36FAD1A823AE4CFE007B4144 /* Kmeans.cpp in Sources */,
+				36FAD1AB23AE4CFE007B4144 /* GLTools.cpp in Sources */,
+				36FAD1AA23AE4CFE007B4144 /* GLProgramManager.cpp in Sources */,
+				36FAD1A723AE4CFE007B4144 /* DrawingPenController.m in Sources */,
 				36C9001E238EB89E007C4F89 /* AppDelegate.m in Sources */,
+				36FAD1A523AE4CFE007B4144 /* ImageHelper.m in Sources */,
+				36FAD1A623AE4CFE007B4144 /* DrawView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,8 +551,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 233YFHV8C6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ImageProcessing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,8 +571,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 233YFHV8C6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ImageProcessing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

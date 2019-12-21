@@ -11,8 +11,8 @@
 #include <string.h>
 
 #include <stdio.h>
-#include <math.h>
-
+#include <cmath>
+NS_IMAGE_BEGIN
 /*
  *s(t_) = Sqrt[A*t*t+B*t+C]
  */
@@ -51,6 +51,8 @@ double BesselAlgorithm::InvertL(float t, float l, float A, float B, float C)
     }while(true);
     return t2;
 }
+
+NS_IMAGE_END
 
 
 
