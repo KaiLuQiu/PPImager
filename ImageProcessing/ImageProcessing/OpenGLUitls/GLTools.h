@@ -16,9 +16,27 @@
 NS_IMAGE_BEGIN
 class GLTools {
 public:
-    static GLuint createGLProgram(const char *VertexString, const char *FragmentString);
+    
+    /*
+     * 创建GLProgram
+     */
+    static GLuint createGLProgram(const char *VertexText, const char *FragmentText);
+    
+    /*
+     * 加载一个空的纹理
+     */
+    static GLuint loadTexture(int width, int height, GLenum format = GL_RGBA);
+    
+    /*
+     * 传入data，创建一份纹理
+     */
+    static GLuint loadTexture(unsigned char *data, int width, int height, GLenum format = GL_RGBA);
 private:
-
+    
+    /*
+    * 创建GLshader
+    */
+    static GLuint createGLShader(const char *shaderText, GLenum shaderType);
 };
 
 NS_IMAGE_END
