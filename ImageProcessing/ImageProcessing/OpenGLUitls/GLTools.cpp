@@ -39,7 +39,7 @@ GLuint GLTools::createGLProgram(const char *VertexText, const char *FragmentText
             if (infoText) {
                 memset(infoText, 0, sizeof(GLchar) * infoLen + 1);
                 glGetProgramInfoLog(program, infoLen, NULL, infoText);
-                printf("Error link program : %s\n", infoLog);
+                printf("Error link program : %s\n", infoText);
                 free(infoText);
             }
         }
