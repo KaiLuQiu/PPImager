@@ -16,6 +16,10 @@
 NS_IMAGE_BEGIN
 class GLTools {
 public:
+    /*
+     * 创建GLProgram from file
+     */
+    static GLuint createGLProgramFromFile(const char *vertextPath, const char *fragPath);
     
     /*
      * 创建GLProgram
@@ -31,12 +35,18 @@ public:
      * 传入data，创建一份纹理
      */
     static GLuint loadTexture(unsigned char *data, int width, int height, GLenum format = GL_RGBA);
+    
+    /*
+    * 从file中去读字节
+    */
+    static long getFileContent(char *buffer, long len, const char *filePath);
 private:
     
     /*
     * 创建GLshader
     */
     static GLuint createGLShader(const char *shaderText, GLenum shaderType);
+
 };
 
 NS_IMAGE_END

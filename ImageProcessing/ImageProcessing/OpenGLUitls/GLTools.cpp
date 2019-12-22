@@ -10,6 +10,25 @@
 NS_IMAGE_BEGIN
 
 /*
+ * 创建GLProgram from file
+ */
+GLuint GLTools::createGLProgramFromFile(const char *vertextPath, const char *fragPath)
+{
+    char vBuffer[2048] = {0};
+    char fBuffer[2048] = {0};
+    
+    if (getFileContent(vBuffer, sizeof(vBuffer), vertextPath) < 0) {
+        return 0;
+    }
+    
+    if (getFileContent(fBuffer, sizeof(fBuffer), fragPath) < 0) {
+        return 0;
+    }
+    
+    return createGLProgram(vBuffer, fBuffer);
+}
+
+/*
  * 创建GLProgram
  */
 GLuint GLTools::createGLProgram(const char *VertexText, const char *FragmentText)
@@ -110,6 +129,32 @@ GLuint GLTools::createGLShader(const char *shaderText, GLenum shaderType)
     return shader;
 }
 
+/*
+* 从file中去读字节
+*/
+long GLTools::getFileContent(char *buffer, long len, const char *filePath)
+{
+    FILE *file = fopen(filePath, "rb");
+    if (file == NULL) {
+        return -1;
+    }
+    
+    fseek(file, 0, SEEK_END);
+    long size = ftell(file);
+    rewind(file);
+    
+    if (len < size) {
+        printf("file is large than the size(%ld) you give\n", len);
+        return -1;
+    }
+    
+    fread(buffer, 1, size, file);
+    buffer[size] = '\0';
+    
+    fclose(file);
+    
+    return size;
+}
 
 NS_IMAGE_END
 
