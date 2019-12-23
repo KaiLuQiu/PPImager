@@ -17,12 +17,35 @@
 		36C90041238EB8A2007C4F89 /* ImageProcessingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C90040238EB8A2007C4F89 /* ImageProcessingUITests.m */; };
 		36FAD18323ADC7E9007B4144 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FAD18223ADC7E8007B4144 /* OpenGLES.framework */; };
 		36FAD1A523AE4CFE007B4144 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19323AE4CFD007B4144 /* ImageHelper.m */; };
-		36FAD1A623AE4CFE007B4144 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19523AE4CFD007B4144 /* DrawView.m */; };
-		36FAD1A723AE4CFE007B4144 /* DrawingPenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19823AE4CFD007B4144 /* DrawingPenController.m */; };
+		36FAD1A623AE4CFE007B4144 /* DrawView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19523AE4CFD007B4144 /* DrawView.mm */; };
+		36FAD1A723AE4CFE007B4144 /* DrawingPenController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19823AE4CFD007B4144 /* DrawingPenController.mm */; };
 		36FAD1A823AE4CFE007B4144 /* Kmeans.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19B23AE4CFE007B4144 /* Kmeans.cpp */; };
 		36FAD1A923AE4CFE007B4144 /* BesselAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD19D23AE4CFE007B4144 /* BesselAlgorithm.cpp */; };
 		36FAD1AA23AE4CFE007B4144 /* GLProgramManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD1A123AE4CFE007B4144 /* GLProgramManager.cpp */; };
 		36FAD1AB23AE4CFE007B4144 /* GLTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD1A223AE4CFE007B4144 /* GLTools.cpp */; };
+		36FAD1B223AF0735007B4144 /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD1B023AF0735007B4144 /* md5.cpp */; };
+		36FAD1B623AF0FF4007B4144 /* vert.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 36FAD1B423AF0FF4007B4144 /* vert.glsl */; };
+		36FAD1B723AF0FF4007B4144 /* frag.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 36FAD1B523AF0FF4007B4144 /* frag.glsl */; };
+		36FAD22D23AF9ABE007B4144 /* getopt1.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD20223AF9ABE007B4144 /* getopt1.c */; };
+		36FAD22E23AF9ABE007B4144 /* backend_pgm.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD20423AF9ABE007B4144 /* backend_pgm.c */; };
+		36FAD22F23AF9ABE007B4144 /* trace.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD20523AF9ABE007B4144 /* trace.c */; };
+		36FAD23023AF9ABE007B4144 /* curve.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD20823AF9ABE007B4144 /* curve.c */; };
+		36FAD23123AF9ABE007B4144 /* lzw.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD20923AF9ABE007B4144 /* lzw.c */; };
+		36FAD23223AF9ABE007B4144 /* backend_dxf.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD20D23AF9ABE007B4144 /* backend_dxf.c */; };
+		36FAD23323AF9ABE007B4144 /* backend_pdf.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD20E23AF9ABE007B4144 /* backend_pdf.c */; };
+		36FAD23423AF9ABE007B4144 /* backend_geojson.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD21123AF9ABE007B4144 /* backend_geojson.c */; };
+		36FAD23523AF9ABE007B4144 /* render.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD21523AF9ABE007B4144 /* render.c */; };
+		36FAD23623AF9ABE007B4144 /* flate.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD21A23AF9ABE007B4144 /* flate.c */; };
+		36FAD23723AF9ABE007B4144 /* progress_bar.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD21B23AF9ABE007B4144 /* progress_bar.c */; };
+		36FAD23823AF9ABE007B4144 /* trans.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD21C23AF9ABE007B4144 /* trans.c */; };
+		36FAD23923AF9ABE007B4144 /* decompose.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD21E23AF9ABE007B4144 /* decompose.c */; };
+		36FAD23A23AF9ABE007B4144 /* bbox.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD22023AF9ABE007B4144 /* bbox.c */; };
+		36FAD23B23AF9ABE007B4144 /* backend_svg.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD22223AF9ABE007B4144 /* backend_svg.c */; };
+		36FAD23C23AF9ABE007B4144 /* greymap.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD22323AF9ABE007B4144 /* greymap.c */; };
+		36FAD23D23AF9ABE007B4144 /* backend_eps.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD22523AF9ABE007B4144 /* backend_eps.c */; };
+		36FAD23E23AF9ABE007B4144 /* backend_xfig.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD22723AF9ABE007B4144 /* backend_xfig.c */; };
+		36FAD23F23AF9ABE007B4144 /* potracelib.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD22923AF9ABE007B4144 /* potracelib.c */; };
+		36FAD24023AF9ABE007B4144 /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD22A23AF9ABE007B4144 /* getopt.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,10 +85,10 @@
 		36FAD18223ADC7E8007B4144 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		36FAD19223AE4CFD007B4144 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
 		36FAD19323AE4CFD007B4144 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
-		36FAD19523AE4CFD007B4144 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
+		36FAD19523AE4CFD007B4144 /* DrawView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DrawView.mm; sourceTree = "<group>"; };
 		36FAD19623AE4CFD007B4144 /* DrawingPenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingPenController.h; sourceTree = "<group>"; };
 		36FAD19723AE4CFD007B4144 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
-		36FAD19823AE4CFD007B4144 /* DrawingPenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingPenController.m; sourceTree = "<group>"; };
+		36FAD19823AE4CFD007B4144 /* DrawingPenController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DrawingPenController.mm; sourceTree = "<group>"; };
 		36FAD19A23AE4CFE007B4144 /* Kmeans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kmeans.h; sourceTree = "<group>"; };
 		36FAD19B23AE4CFE007B4144 /* Kmeans.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Kmeans.cpp; sourceTree = "<group>"; };
 		36FAD19C23AE4CFE007B4144 /* BesselAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BesselAlgorithm.h; sourceTree = "<group>"; };
@@ -75,6 +98,56 @@
 		36FAD1A223AE4CFE007B4144 /* GLTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLTools.cpp; sourceTree = "<group>"; };
 		36FAD1A323AE4CFE007B4144 /* GLTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTools.h; sourceTree = "<group>"; };
 		36FAD1A423AE4CFE007B4144 /* GLProgramManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgramManager.h; sourceTree = "<group>"; };
+		36FAD1B023AF0735007B4144 /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
+		36FAD1B123AF0735007B4144 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		36FAD1B423AF0FF4007B4144 /* vert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vert.glsl; sourceTree = "<group>"; };
+		36FAD1B523AF0FF4007B4144 /* frag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frag.glsl; sourceTree = "<group>"; };
+		36FAD1FF23AF9ABE007B4144 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		36FAD20023AF9ABE007B4144 /* bbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bbox.h; sourceTree = "<group>"; };
+		36FAD20123AF9ABE007B4144 /* progress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = progress.h; sourceTree = "<group>"; };
+		36FAD20223AF9ABE007B4144 /* getopt1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = getopt1.c; sourceTree = "<group>"; };
+		36FAD20323AF9ABE007B4144 /* decompose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decompose.h; sourceTree = "<group>"; };
+		36FAD20423AF9ABE007B4144 /* backend_pgm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = backend_pgm.c; sourceTree = "<group>"; };
+		36FAD20523AF9ABE007B4144 /* trace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trace.c; sourceTree = "<group>"; };
+		36FAD20623AF9ABE007B4144 /* progress_bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = progress_bar.h; sourceTree = "<group>"; };
+		36FAD20723AF9ABE007B4144 /* trans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trans.h; sourceTree = "<group>"; };
+		36FAD20823AF9ABE007B4144 /* curve.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curve.c; sourceTree = "<group>"; };
+		36FAD20923AF9ABE007B4144 /* lzw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzw.c; sourceTree = "<group>"; };
+		36FAD20A23AF9ABE007B4144 /* flate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flate.h; sourceTree = "<group>"; };
+		36FAD20B23AF9ABE007B4144 /* bitops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitops.h; sourceTree = "<group>"; };
+		36FAD20C23AF9ABE007B4144 /* greymap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = greymap.h; sourceTree = "<group>"; };
+		36FAD20D23AF9ABE007B4144 /* backend_dxf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = backend_dxf.c; sourceTree = "<group>"; };
+		36FAD20E23AF9ABE007B4144 /* backend_pdf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = backend_pdf.c; sourceTree = "<group>"; };
+		36FAD20F23AF9ABE007B4144 /* backend_svg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backend_svg.h; sourceTree = "<group>"; };
+		36FAD21023AF9ABE007B4144 /* backend_xfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backend_xfig.h; sourceTree = "<group>"; };
+		36FAD21123AF9ABE007B4144 /* backend_geojson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = backend_geojson.c; sourceTree = "<group>"; };
+		36FAD21223AF9ABE007B4144 /* backend_eps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backend_eps.h; sourceTree = "<group>"; };
+		36FAD21323AF9ABE007B4144 /* auxiliary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = auxiliary.h; sourceTree = "<group>"; };
+		36FAD21423AF9ABE007B4144 /* lists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lists.h; sourceTree = "<group>"; };
+		36FAD21523AF9ABE007B4144 /* render.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = render.c; sourceTree = "<group>"; };
+		36FAD21623AF9ABE007B4144 /* potracelib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = potracelib.h; sourceTree = "<group>"; };
+		36FAD21723AF9ABE007B4144 /* getopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getopt.h; sourceTree = "<group>"; };
+		36FAD21823AF9ABE007B4144 /* lzw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzw.h; sourceTree = "<group>"; };
+		36FAD21923AF9ABE007B4144 /* curve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curve.h; sourceTree = "<group>"; };
+		36FAD21A23AF9ABE007B4144 /* flate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = flate.c; sourceTree = "<group>"; };
+		36FAD21B23AF9ABE007B4144 /* progress_bar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = progress_bar.c; sourceTree = "<group>"; };
+		36FAD21C23AF9ABE007B4144 /* trans.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trans.c; sourceTree = "<group>"; };
+		36FAD21D23AF9ABE007B4144 /* backend_pgm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backend_pgm.h; sourceTree = "<group>"; };
+		36FAD21E23AF9ABE007B4144 /* decompose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = decompose.c; sourceTree = "<group>"; };
+		36FAD21F23AF9ABE007B4144 /* trace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trace.h; sourceTree = "<group>"; };
+		36FAD22023AF9ABE007B4144 /* bbox.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bbox.c; sourceTree = "<group>"; };
+		36FAD22123AF9ABE007B4144 /* backend_pdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backend_pdf.h; sourceTree = "<group>"; };
+		36FAD22223AF9ABE007B4144 /* backend_svg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = backend_svg.c; sourceTree = "<group>"; };
+		36FAD22323AF9ABE007B4144 /* greymap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = greymap.c; sourceTree = "<group>"; };
+		36FAD22423AF9ABE007B4144 /* backend_dxf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backend_dxf.h; sourceTree = "<group>"; };
+		36FAD22523AF9ABE007B4144 /* backend_eps.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = backend_eps.c; sourceTree = "<group>"; };
+		36FAD22623AF9ABE007B4144 /* backend_geojson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backend_geojson.h; sourceTree = "<group>"; };
+		36FAD22723AF9ABE007B4144 /* backend_xfig.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = backend_xfig.c; sourceTree = "<group>"; };
+		36FAD22823AF9ABE007B4144 /* bitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitmap.h; sourceTree = "<group>"; };
+		36FAD22923AF9ABE007B4144 /* potracelib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = potracelib.c; sourceTree = "<group>"; };
+		36FAD22A23AF9ABE007B4144 /* getopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = getopt.c; sourceTree = "<group>"; };
+		36FAD22B23AF9ABE007B4144 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
+		36FAD22C23AF9ABE007B4144 /* render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,10 +273,10 @@
 		36FAD19423AE4CFD007B4144 /* Scrawl */ = {
 			isa = PBXGroup;
 			children = (
-				36FAD19523AE4CFD007B4144 /* DrawView.m */,
-				36FAD19623AE4CFD007B4144 /* DrawingPenController.h */,
+				36FAD19523AE4CFD007B4144 /* DrawView.mm */,
 				36FAD19723AE4CFD007B4144 /* DrawView.h */,
-				36FAD19823AE4CFD007B4144 /* DrawingPenController.m */,
+				36FAD19623AE4CFD007B4144 /* DrawingPenController.h */,
+				36FAD19823AE4CFD007B4144 /* DrawingPenController.mm */,
 			);
 			path = Scrawl;
 			sourceTree = "<group>";
@@ -211,6 +284,7 @@
 		36FAD19923AE4CFE007B4144 /* ImageAlgorithm */ = {
 			isa = PBXGroup;
 			children = (
+				36FAD1FE23AF9ABE007B4144 /* potrace */,
 				36FAD19A23AE4CFE007B4144 /* Kmeans.h */,
 				36FAD19B23AE4CFE007B4144 /* Kmeans.cpp */,
 				36FAD19C23AE4CFE007B4144 /* BesselAlgorithm.h */,
@@ -223,6 +297,7 @@
 		36FAD19E23AE4CFE007B4144 /* ImageCommon */ = {
 			isa = PBXGroup;
 			children = (
+				36FAD1AF23AF0735007B4144 /* utils */,
 				36FAD19F23AE4CFE007B4144 /* ImageCommon.h */,
 			);
 			name = ImageCommon;
@@ -232,13 +307,85 @@
 		36FAD1A023AE4CFE007B4144 /* OpenGLUitls */ = {
 			isa = PBXGroup;
 			children = (
+				36FAD1B323AF0FF4007B4144 /* shader */,
+				36FAD1A423AE4CFE007B4144 /* GLProgramManager.h */,
 				36FAD1A123AE4CFE007B4144 /* GLProgramManager.cpp */,
 				36FAD1A223AE4CFE007B4144 /* GLTools.cpp */,
 				36FAD1A323AE4CFE007B4144 /* GLTools.h */,
-				36FAD1A423AE4CFE007B4144 /* GLProgramManager.h */,
 			);
 			name = OpenGLUitls;
 			path = ImageProcessing/OpenGLUitls;
+			sourceTree = "<group>";
+		};
+		36FAD1AF23AF0735007B4144 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD1B023AF0735007B4144 /* md5.cpp */,
+				36FAD1B123AF0735007B4144 /* md5.h */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		36FAD1B323AF0FF4007B4144 /* shader */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD1B423AF0FF4007B4144 /* vert.glsl */,
+				36FAD1B523AF0FF4007B4144 /* frag.glsl */,
+			);
+			path = shader;
+			sourceTree = "<group>";
+		};
+		36FAD1FE23AF9ABE007B4144 /* potrace */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD1FF23AF9ABE007B4144 /* main.h */,
+				36FAD20023AF9ABE007B4144 /* bbox.h */,
+				36FAD20123AF9ABE007B4144 /* progress.h */,
+				36FAD20223AF9ABE007B4144 /* getopt1.c */,
+				36FAD20323AF9ABE007B4144 /* decompose.h */,
+				36FAD20423AF9ABE007B4144 /* backend_pgm.c */,
+				36FAD20523AF9ABE007B4144 /* trace.c */,
+				36FAD20623AF9ABE007B4144 /* progress_bar.h */,
+				36FAD20723AF9ABE007B4144 /* trans.h */,
+				36FAD20823AF9ABE007B4144 /* curve.c */,
+				36FAD20923AF9ABE007B4144 /* lzw.c */,
+				36FAD20A23AF9ABE007B4144 /* flate.h */,
+				36FAD20B23AF9ABE007B4144 /* bitops.h */,
+				36FAD20C23AF9ABE007B4144 /* greymap.h */,
+				36FAD20D23AF9ABE007B4144 /* backend_dxf.c */,
+				36FAD20E23AF9ABE007B4144 /* backend_pdf.c */,
+				36FAD20F23AF9ABE007B4144 /* backend_svg.h */,
+				36FAD21023AF9ABE007B4144 /* backend_xfig.h */,
+				36FAD21123AF9ABE007B4144 /* backend_geojson.c */,
+				36FAD21223AF9ABE007B4144 /* backend_eps.h */,
+				36FAD21323AF9ABE007B4144 /* auxiliary.h */,
+				36FAD21423AF9ABE007B4144 /* lists.h */,
+				36FAD21523AF9ABE007B4144 /* render.c */,
+				36FAD21623AF9ABE007B4144 /* potracelib.h */,
+				36FAD21723AF9ABE007B4144 /* getopt.h */,
+				36FAD21823AF9ABE007B4144 /* lzw.h */,
+				36FAD21923AF9ABE007B4144 /* curve.h */,
+				36FAD21A23AF9ABE007B4144 /* flate.c */,
+				36FAD21B23AF9ABE007B4144 /* progress_bar.c */,
+				36FAD21C23AF9ABE007B4144 /* trans.c */,
+				36FAD21D23AF9ABE007B4144 /* backend_pgm.h */,
+				36FAD21E23AF9ABE007B4144 /* decompose.c */,
+				36FAD21F23AF9ABE007B4144 /* trace.h */,
+				36FAD22023AF9ABE007B4144 /* bbox.c */,
+				36FAD22123AF9ABE007B4144 /* backend_pdf.h */,
+				36FAD22223AF9ABE007B4144 /* backend_svg.c */,
+				36FAD22323AF9ABE007B4144 /* greymap.c */,
+				36FAD22423AF9ABE007B4144 /* backend_dxf.h */,
+				36FAD22523AF9ABE007B4144 /* backend_eps.c */,
+				36FAD22623AF9ABE007B4144 /* backend_geojson.h */,
+				36FAD22723AF9ABE007B4144 /* backend_xfig.c */,
+				36FAD22823AF9ABE007B4144 /* bitmap.h */,
+				36FAD22923AF9ABE007B4144 /* potracelib.c */,
+				36FAD22A23AF9ABE007B4144 /* getopt.c */,
+				36FAD22B23AF9ABE007B4144 /* platform.h */,
+				36FAD22C23AF9ABE007B4144 /* render.h */,
+			);
+			path = potrace;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +493,8 @@
 			files = (
 				36C90029238EB8A2007C4F89 /* LaunchScreen.storyboard in Resources */,
 				36C90026238EB8A2007C4F89 /* Assets.xcassets in Resources */,
+				36FAD1B623AF0FF4007B4144 /* vert.glsl in Resources */,
+				36FAD1B723AF0FF4007B4144 /* frag.glsl in Resources */,
 				36C90024238EB89E007C4F89 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,16 +520,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36FAD1B223AF0735007B4144 /* md5.cpp in Sources */,
+				36FAD22F23AF9ABE007B4144 /* trace.c in Sources */,
+				36FAD24023AF9ABE007B4144 /* getopt.c in Sources */,
 				36C90021238EB89E007C4F89 /* ViewController.m in Sources */,
+				36FAD23123AF9ABE007B4144 /* lzw.c in Sources */,
 				36FAD1A923AE4CFE007B4144 /* BesselAlgorithm.cpp in Sources */,
+				36FAD23D23AF9ABE007B4144 /* backend_eps.c in Sources */,
+				36FAD23F23AF9ABE007B4144 /* potracelib.c in Sources */,
+				36FAD23B23AF9ABE007B4144 /* backend_svg.c in Sources */,
+				36FAD22E23AF9ABE007B4144 /* backend_pgm.c in Sources */,
+				36FAD23823AF9ABE007B4144 /* trans.c in Sources */,
+				36FAD23223AF9ABE007B4144 /* backend_dxf.c in Sources */,
+				36FAD23323AF9ABE007B4144 /* backend_pdf.c in Sources */,
+				36FAD23723AF9ABE007B4144 /* progress_bar.c in Sources */,
 				36C9002C238EB8A2007C4F89 /* main.m in Sources */,
+				36FAD23C23AF9ABE007B4144 /* greymap.c in Sources */,
+				36FAD23923AF9ABE007B4144 /* decompose.c in Sources */,
 				36FAD1A823AE4CFE007B4144 /* Kmeans.cpp in Sources */,
 				36FAD1AB23AE4CFE007B4144 /* GLTools.cpp in Sources */,
 				36FAD1AA23AE4CFE007B4144 /* GLProgramManager.cpp in Sources */,
-				36FAD1A723AE4CFE007B4144 /* DrawingPenController.m in Sources */,
+				36FAD1A723AE4CFE007B4144 /* DrawingPenController.mm in Sources */,
+				36FAD23523AF9ABE007B4144 /* render.c in Sources */,
 				36C9001E238EB89E007C4F89 /* AppDelegate.m in Sources */,
+				36FAD23623AF9ABE007B4144 /* flate.c in Sources */,
 				36FAD1A523AE4CFE007B4144 /* ImageHelper.m in Sources */,
-				36FAD1A623AE4CFE007B4144 /* DrawView.m in Sources */,
+				36FAD23A23AF9ABE007B4144 /* bbox.c in Sources */,
+				36FAD23023AF9ABE007B4144 /* curve.c in Sources */,
+				36FAD23E23AF9ABE007B4144 /* backend_xfig.c in Sources */,
+				36FAD23423AF9ABE007B4144 /* backend_geojson.c in Sources */,
+				36FAD22D23AF9ABE007B4144 /* getopt1.c in Sources */,
+				36FAD1A623AE4CFE007B4144 /* DrawView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
