@@ -67,52 +67,52 @@ void antrace::calc_dimensions(imginfo_t *imginfo, potrace_path_t *plist)
   }
 
   /* set the default dimension for width, height, margins */
-  if (antrace_info.backend->pixel) {
+  if (potrace_info.backend->pixel) {
     dim_def = DIM_PT;
   } else {
     dim_def = DEFAULT_DIM;
   }
 
   /* apply default dimension to width, height, margins */
-  imginfo->width = antrace_info.width_d.x == UNDEF ? UNDEF : double_of_dim(antrace_info.width_d, dim_def);
-  imginfo->height = antrace_info.height_d.x == UNDEF ? UNDEF : double_of_dim(antrace_info.height_d, dim_def);
-  imginfo->lmar = antrace_info.lmar_d.x == UNDEF ? UNDEF : double_of_dim(antrace_info.lmar_d, dim_def);
-  imginfo->rmar = antrace_info.rmar_d.x == UNDEF ? UNDEF : double_of_dim(antrace_info.rmar_d, dim_def);
-  imginfo->tmar = antrace_info.tmar_d.x == UNDEF ? UNDEF : double_of_dim(antrace_info.tmar_d, dim_def);
-  imginfo->bmar = antrace_info.bmar_d.x == UNDEF ? UNDEF : double_of_dim(antrace_info.bmar_d, dim_def);
+  imginfo->width = potrace_info.width_d.x == UNDEF ? UNDEF : double_of_dim(potrace_info.width_d, dim_def);
+  imginfo->height = potrace_info.height_d.x == UNDEF ? UNDEF : double_of_dim(potrace_info.height_d, dim_def);
+  imginfo->lmar = potrace_info.lmar_d.x == UNDEF ? UNDEF : double_of_dim(potrace_info.lmar_d, dim_def);
+  imginfo->rmar = potrace_info.rmar_d.x == UNDEF ? UNDEF : double_of_dim(potrace_info.rmar_d, dim_def);
+  imginfo->tmar = potrace_info.tmar_d.x == UNDEF ? UNDEF : double_of_dim(potrace_info.tmar_d, dim_def);
+  imginfo->bmar = potrace_info.bmar_d.x == UNDEF ? UNDEF : double_of_dim(potrace_info.bmar_d, dim_def);
 
   /* start with a standard rectangle */
   trans_from_rect(&imginfo->trans, imginfo->pixwidth, imginfo->pixheight);
 
-  /* if info.tight is set, tighten the bounding box */
-  if (antrace_info.tight) {
+  /* if potrace_info.tight is set, tighten the bounding box */
+  if (potrace_info.tight) {
     trans_tighten(&imginfo->trans, plist);
   }
 
   /* sx/rx is just an alternate way to specify width; sy/ry is just an
      alternate way to specify height. */
-  if (antrace_info.backend->pixel) {
-    if (imginfo->width == UNDEF && antrace_info.sx != UNDEF) {
-      imginfo->width = imginfo->trans.bb[0] * antrace_info.sx;
+  if (potrace_info.backend->pixel) {
+    if (imginfo->width == UNDEF && potrace_info.sx != UNDEF) {
+      imginfo->width = imginfo->trans.bb[0] * potrace_info.sx;
     }
-    if (imginfo->height == UNDEF && antrace_info.sy != UNDEF) {
-      imginfo->height = imginfo->trans.bb[1] * antrace_info.sy;
+    if (imginfo->height == UNDEF && potrace_info.sy != UNDEF) {
+      imginfo->height = imginfo->trans.bb[1] * potrace_info.sy;
     }
   } else {
-    if (imginfo->width == UNDEF && antrace_info.rx != UNDEF) {
-      imginfo->width = imginfo->trans.bb[0] / antrace_info.rx * 72;
+    if (imginfo->width == UNDEF && potrace_info.rx != UNDEF) {
+      imginfo->width = imginfo->trans.bb[0] / potrace_info.rx * 72;
     }
-    if (imginfo->height == UNDEF && antrace_info.ry != UNDEF) {
-      imginfo->height = imginfo->trans.bb[1] / antrace_info.ry * 72;
+    if (imginfo->height == UNDEF && potrace_info.ry != UNDEF) {
+      imginfo->height = imginfo->trans.bb[1] / potrace_info.ry * 72;
     }
   }
 
   /* if one of width/height is specified, use stretch to determine the
      other */
   if (imginfo->width == UNDEF && imginfo->height != UNDEF) {
-    imginfo->width = imginfo->height / imginfo->trans.bb[1] * imginfo->trans.bb[0] / antrace_info.stretch;
+    imginfo->width = imginfo->height / imginfo->trans.bb[1] * imginfo->trans.bb[0] / potrace_info.stretch;
   } else if (imginfo->width != UNDEF && imginfo->height == UNDEF) {
-    imginfo->height = imginfo->width / imginfo->trans.bb[0] * imginfo->trans.bb[1] * antrace_info.stretch;
+    imginfo->height = imginfo->width / imginfo->trans.bb[0] * imginfo->trans.bb[1] * potrace_info.stretch;
   }
 
   /* if width and height are still variable, tenatively use the
@@ -121,7 +121,7 @@ void antrace::calc_dimensions(imginfo_t *imginfo, potrace_path_t *plist)
      be adjusted later to fit the page. */
   if (imginfo->width == UNDEF && imginfo->height == UNDEF) {
     imginfo->width = imginfo->trans.bb[0];
-    imginfo->height = imginfo->trans.bb[1] * antrace_info.stretch;
+    imginfo->height = imginfo->trans.bb[1] * potrace_info.stretch;
     default_scaling = 1;
   }
 
@@ -129,9 +129,9 @@ void antrace::calc_dimensions(imginfo_t *imginfo, potrace_path_t *plist)
   trans_scale_to_size(&imginfo->trans, imginfo->width, imginfo->height);
 
   /* apply rotation, and tighten the bounding box again, if necessary */
-  if (antrace_info.angle != 0.0) {
-    trans_rotate(&imginfo->trans, antrace_info.angle);
-    if (antrace_info.tight) {
+  if (potrace_info.angle != 0.0) {
+    trans_rotate(&imginfo->trans, potrace_info.angle);
+    if (potrace_info.tight) {
       trans_tighten(&imginfo->trans, plist);
     }
   }
@@ -139,21 +139,21 @@ void antrace::calc_dimensions(imginfo_t *imginfo, potrace_path_t *plist)
   /* for fixed-size backends, if default scaling was in effect,
      further adjust the scaling to be the "best fit" for the given
      page size and margins. */
-  if (default_scaling && antrace_info.backend->fixed) {
+  if (default_scaling && potrace_info.backend->fixed) {
 
     /* try to squeeze it between margins */
     maxwidth = UNDEF;
     maxheight = UNDEF;
 
     if (imginfo->lmar != UNDEF && imginfo->rmar != UNDEF) {
-      maxwidth = antrace_info.paperwidth - imginfo->lmar - imginfo->rmar;
+      maxwidth = potrace_info.paperwidth - imginfo->lmar - imginfo->rmar;
     }
     if (imginfo->bmar != UNDEF && imginfo->tmar != UNDEF) {
-      maxheight = antrace_info.paperheight - imginfo->bmar - imginfo->tmar;
+      maxheight = potrace_info.paperheight - imginfo->bmar - imginfo->tmar;
     }
     if (maxwidth == UNDEF && maxheight == UNDEF) {
-      maxwidth = max(antrace_info.paperwidth - 144, antrace_info.paperwidth * 0.75);
-      maxheight = max(antrace_info.paperheight - 144, antrace_info.paperheight * 0.75);
+      maxwidth = max(potrace_info.paperwidth - 144, potrace_info.paperwidth * 0.75);
+      maxheight = max(potrace_info.paperheight - 144, potrace_info.paperheight * 0.75);
     }
 
     if (maxwidth == UNDEF) {
@@ -171,20 +171,20 @@ void antrace::calc_dimensions(imginfo_t *imginfo, potrace_path_t *plist)
   }
 
   /* adjust margins */
-  if (antrace_info.backend->fixed) {
+  if (potrace_info.backend->fixed) {
     if (imginfo->lmar == UNDEF && imginfo->rmar == UNDEF) {
-      imginfo->lmar = (antrace_info.paperwidth-imginfo->trans.bb[0])/2;
+      imginfo->lmar = (potrace_info.paperwidth-imginfo->trans.bb[0])/2;
     } else if (imginfo->lmar == UNDEF) {
-      imginfo->lmar = (antrace_info.paperwidth-imginfo->trans.bb[0]-imginfo->rmar);
+      imginfo->lmar = (potrace_info.paperwidth-imginfo->trans.bb[0]-imginfo->rmar);
     } else if (imginfo->lmar != UNDEF && imginfo->rmar != UNDEF) {
-      imginfo->lmar += (antrace_info.paperwidth-imginfo->trans.bb[0]-imginfo->lmar-imginfo->rmar)/2;
+      imginfo->lmar += (potrace_info.paperwidth-imginfo->trans.bb[0]-imginfo->lmar-imginfo->rmar)/2;
     }
     if (imginfo->bmar == UNDEF && imginfo->tmar == UNDEF) {
-      imginfo->bmar = (antrace_info.paperheight-imginfo->trans.bb[1])/2;
+      imginfo->bmar = (potrace_info.paperheight-imginfo->trans.bb[1])/2;
     } else if (imginfo->bmar == UNDEF) {
-      imginfo->bmar = (antrace_info.paperheight-imginfo->trans.bb[1]-imginfo->tmar);
+      imginfo->bmar = (potrace_info.paperheight-imginfo->trans.bb[1]-imginfo->tmar);
     } else if (imginfo->bmar != UNDEF && imginfo->tmar != UNDEF) {
-      imginfo->bmar += (antrace_info.paperheight-imginfo->trans.bb[1]-imginfo->bmar-imginfo->tmar)/2;
+      imginfo->bmar += (potrace_info.paperheight-imginfo->trans.bb[1]-imginfo->bmar-imginfo->tmar)/2;
     }
   } else {
     if (imginfo->lmar == UNDEF) {
@@ -204,48 +204,49 @@ void antrace::calc_dimensions(imginfo_t *imginfo, potrace_path_t *plist)
 
 void antrace::initInfo(char const* filetype)
 {
-    backend_lookup((char*)filetype, &antrace_info.backend);
-    antrace_info.debug = 0;
-    antrace_info.width_d.x = UNDEF;
-    antrace_info.height_d.x = UNDEF;
-    antrace_info.rx = UNDEF;
-    antrace_info.ry = UNDEF;
-    antrace_info.sx = UNDEF;
-    antrace_info.sy = UNDEF;
-    antrace_info.stretch = 1;
-    antrace_info.lmar_d.x = UNDEF;
-    antrace_info.rmar_d.x = UNDEF;
-    antrace_info.tmar_d.x = UNDEF;
-    antrace_info.bmar_d.x = UNDEF;
-    antrace_info.angle = 0;
-    antrace_info.paperwidth = DEFAULT_PAPERWIDTH;
-    antrace_info.paperheight = DEFAULT_PAPERHEIGHT;
-    antrace_info.tight = 0;
-    antrace_info.unit = 10;
-    antrace_info.compress = 1;
-    antrace_info.pslevel = 2;
-    antrace_info.color = 0xffffff;
-    antrace_info.gamma = 2.2;
+    backend_lookup((char*)filetype, &potrace_info.backend);
+    potrace_info.debug = 0;
+    potrace_info.width_d.x = UNDEF;
+    potrace_info.height_d.x = UNDEF;
+    potrace_info.rx = UNDEF;
+    potrace_info.ry = UNDEF;
+    potrace_info.sx = UNDEF;
+    potrace_info.sy = UNDEF;
+    potrace_info.stretch = 1;
+    potrace_info.lmar_d.x = UNDEF;
+    potrace_info.rmar_d.x = UNDEF;
+    potrace_info.tmar_d.x = UNDEF;
+    potrace_info.bmar_d.x = UNDEF;
+    potrace_info.angle = 0;
+    potrace_info.paperwidth = DEFAULT_PAPERWIDTH;
+    potrace_info.paperheight = DEFAULT_PAPERHEIGHT;
+    potrace_info.tight = 0;
+    potrace_info.unit = 10;
+    potrace_info.compress = 1;
+    potrace_info.pslevel = 2;
+    potrace_info.color = 0xffffff;
+    potrace_info.gamma = 2.2;
     /*
-    info.param = potrace_param_default();
-    if (!info.param) {
+    potrace_info.param = potrace_param_default();
+    if (!potrace_info.param) {
         return JNI_FALSE;
     }
     */
-    antrace_info.longcoding = 0;
-    antrace_info.outfile = NULL;
-    antrace_info.blacklevel = 0.5;
-    antrace_info.invert = 0;
-    antrace_info.opaque = 1;
-    antrace_info.grouping = 1;
-    antrace_info.fillcolor = 0x000000;
-    antrace_info.progress = 0;
-    antrace_info.progress_bar = DEFAULT_PROGRESS_BAR;
+    potrace_info.longcoding = 0;
+    potrace_info.outfile = NULL;
+    potrace_info.blacklevel = 0.5;
+    potrace_info.invert = 0;
+    potrace_info.opaque = 1;
+    potrace_info.grouping = 1;
+    potrace_info.fillcolor = 0x000000;
+    potrace_info.progress = 0;
+    potrace_info.progress_bar = DEFAULT_PROGRESS_BAR;
 }
 
 
 bool antrace::traceImage(unsigned char *data, int width, int height, char* path)
 {
+    bool ret = false;
     potrace_param_t* param_t = potrace_param_default();
     param_t->turdsize = 15;
     param_t->opttolerance = 0.8;
@@ -283,14 +284,14 @@ bool antrace::traceImage(unsigned char *data, int width, int height, char* path)
     s_state = potrace_trace(param_t, bmp_t);
     potrace_param_free(param_t);
     
-    saveToFile(path, width, height, "svg");
+    ret = saveToFile(path, width, height, "svg");
  
     bm_free(bmp_t);
     
     if (!s_state || s_state->status != POTRACE_STATUS_OK) {
-        return false;
+        ret = false;
     }
-    return true;
+    return ret;
 }
 
 bool antrace::saveToFile(char* path, int width, int height, const char* filetype)
@@ -302,7 +303,7 @@ bool antrace::saveToFile(char* path, int width, int height, const char* filetype
     calc_dimensions(&imginfo, s_state->plist);
     FILE *f = fopen(path, "w+");
     if (f) {
-         struct backend_s *b = antrace_info.backend;
+         struct backend_s *b = potrace_info.backend;
          if (b->init_f) {
              if(0 != b->init_f(f)) {
                  fclose(f);
@@ -320,3 +321,4 @@ bool antrace::saveToFile(char* path, int width, int height, const char* filetype
      }
     return true;
 }
+

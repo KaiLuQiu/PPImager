@@ -28,8 +28,8 @@
 static inline point_t unit(dpoint_t p) {
   point_t q;
 
-  q.x = (long)(floor(p.x*info.unit+.5));
-  q.y = (long)(floor(p.y*info.unit+.5));
+  q.x = (long)(floor(p.x*potrace_info.unit+.5));
+  q.y = (long)(floor(p.y*potrace_info.unit+.5));
   return q;
 }
 
@@ -194,37 +194,37 @@ static void write_paths_opaque(FILE *fout, potrace_path_t *tree) {
   potrace_path_t *p, *q;
 
   for (p=tree; p; p=p->sibling) {
-    if (info.grouping == 2) {
+    if (potrace_info.grouping == 2) {
       fprintf(fout, "<g>\n");
       fprintf(fout, "<g>\n");
     }
-    column = fprintf(fout, "<path fill=\"#%06x\" stroke=\"none\" d=\"", info.color);
+    column = fprintf(fout, "<path fill=\"#%06x\" stroke=\"none\" d=\"", potrace_info.color);
     newline = 1;
     lastop = 0;
-    if (info.debug == 1) {
+    if (potrace_info.debug == 1) {
       svg_jaggy_path(fout, p->priv->pt, p->priv->len, 1);
     } else {
       svg_path(fout, &p->curve, 1);
     }
     fprintf(fout, "\"/>\n");
     for (q=p->childlist; q; q=q->sibling) {
-      column = fprintf(fout, "<path fill=\"#%06x\" stroke=\"none\" d=\"", info.fillcolor);
+      column = fprintf(fout, "<path fill=\"#%06x\" stroke=\"none\" d=\"", potrace_info.fillcolor);
       newline = 1;
       lastop = 0;
-      if (info.debug == 1) {
+      if (potrace_info.debug == 1) {
 	svg_jaggy_path(fout, q->priv->pt, q->priv->len, 1);
       } else {
 	svg_path(fout, &q->curve, 1);
       }
       fprintf(fout, "\"/>\n");
     }
-    if (info.grouping == 2) {
+    if (potrace_info.grouping == 2) {
       fprintf(fout, "</g>\n");
     }
     for (q=p->childlist; q; q=q->sibling) {
       write_paths_opaque(fout, q->childlist);
     }
-    if (info.grouping == 2) {
+    if (potrace_info.grouping == 2) {
       fprintf(fout, "</g>\n");
     }
   }
@@ -234,46 +234,46 @@ static void write_paths_transparent_rec(FILE *fout, potrace_path_t *tree) {
   potrace_path_t *p, *q;
 
   for (p=tree; p; p=p->sibling) {
-    if (info.grouping == 2) {
+    if (potrace_info.grouping == 2) {
       fprintf(fout, "<g>\n");
     }
-    if (info.grouping != 0) {
+    if (potrace_info.grouping != 0) {
       column = fprintf(fout, "<path d=\"");
       newline = 1;
       lastop = 0;
     }
-    if (info.debug == 1) {
+    if (potrace_info.debug == 1) {
       svg_jaggy_path(fout, p->priv->pt, p->priv->len, 1);
     } else {
       svg_path(fout, &p->curve, 1);
     }
     for (q=p->childlist; q; q=q->sibling) {
-      if (info.debug == 1) {
+      if (potrace_info.debug == 1) {
 	svg_jaggy_path(fout, q->priv->pt, q->priv->len, 0);
       } else {
 	svg_path(fout, &q->curve, 0);
       }
     }
-    if (info.grouping != 0) {
+    if (potrace_info.grouping != 0) {
       fprintf(fout, "\"/>\n");
     }
     for (q=p->childlist; q; q=q->sibling) {
       write_paths_transparent_rec(fout, q->childlist);
     }
-    if (info.grouping == 2) {
+    if (potrace_info.grouping == 2) {
       fprintf(fout, "</g>\n");
     }
   }
 }
 
 static void write_paths_transparent(FILE *fout, potrace_path_t *tree) {
-  if (info.grouping == 0) {
+  if (potrace_info.grouping == 0) {
     column = fprintf(fout, "<path d=\"");
     newline = 1;
     lastop = 0;
   }
   write_paths_transparent_rec(fout, tree);
-  if (info.grouping == 0) {
+  if (potrace_info.grouping == 0) {
     fprintf(fout, "\"/>\n");
   }
 }
@@ -288,8 +288,8 @@ int page_svg(FILE *fout, potrace_path_t *plist, imginfo_t *imginfo) {
   double bboxy = imginfo->trans.bb[1]+imginfo->tmar+imginfo->bmar;
   double origx = imginfo->trans.orig[0] + imginfo->lmar;
   double origy = bboxy - imginfo->trans.orig[1] - imginfo->bmar;
-  double scalex = imginfo->trans.scalex / info.unit;
-  double scaley = -imginfo->trans.scaley / info.unit;
+  double scalex = imginfo->trans.scalex / potrace_info.unit;
+  double scaley = -imginfo->trans.scaley / potrace_info.unit;
 
   /* header */
   fprintf(fout, "<?xml version=\"1.0\" standalone=\"no\"?>\n");
@@ -313,14 +313,14 @@ int page_svg(FILE *fout, potrace_path_t *plist, imginfo_t *imginfo) {
   if (origx != 0 || origy != 0) {
     fprintf(fout, "translate(%f,%f) ", origx, origy);
   }
-  if (info.angle != 0) {
-    fprintf(fout, "rotate(%.2f) ", -info.angle);
+  if (potrace_info.angle != 0) {
+    fprintf(fout, "rotate(%.2f) ", -potrace_info.angle);
   }
   fprintf(fout, "scale(%f,%f)", scalex, scaley);
   fprintf(fout, "\"\n");
-  fprintf(fout, "fill=\"#%06x\" stroke=\"none\">\n", info.color);
+  fprintf(fout, "fill=\"#%06x\" stroke=\"none\">\n", potrace_info.color);
 
-  if (info.opaque) {
+  if (potrace_info.opaque) {
     write_paths_opaque(fout, plist);
   } else {
     write_paths_transparent(fout, plist);
@@ -337,7 +337,7 @@ int page_svg(FILE *fout, potrace_path_t *plist, imginfo_t *imginfo) {
 /* the Gimppath backend is identical, except that it disables
    --opaque, enables --flat, and the dimensions are pixel-based */
 int page_gimp(FILE *fout, potrace_path_t *plist, imginfo_t *imginfo) {
-  info.opaque = 0;
-  info.grouping = 0;
+  potrace_info.opaque = 0;
+  potrace_info.grouping = 0;
   return page_svg(fout, plist, imginfo);
 }

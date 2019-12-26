@@ -96,7 +96,7 @@ int page_pgm(FILE *fout, potrace_path_t *plist, imginfo_t *imginfo) {
   /* if negative orientation, make sure to invert effect of rendering */
   mode = imginfo->width * imginfo->height < 0 ? GM_MODE_NEGATIVE : GM_MODE_POSITIVE;
 
-  gm_writepgm(fout, rm->gm, comment, 1, mode, info.gamma);
+  gm_writepgm(fout, rm->gm, comment, 1, mode, potrace_info.gamma);
 
   render_free(rm);
   gm_free(gm);

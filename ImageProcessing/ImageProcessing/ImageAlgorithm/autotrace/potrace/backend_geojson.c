@@ -48,7 +48,7 @@ static char *round_to_unit(double x) {
 }
 
 /* Select a print format for floating point numbers, appropriate for
-   the given scaling and info.unit. Note: the format must be so that
+   the given scaling and potrace_info.unit. Note: the format must be so that
    the resulting number fits into a buffer of size 100. */
 static void set_format(trans_t tr) {
   double s;
@@ -56,8 +56,8 @@ static void set_format(trans_t tr) {
   static char buf[10];
 
   s = min(fabs(tr.scalex), fabs(tr.scaley));
-  if (info.unit != 0.0 && s != 0.0) {
-    d = (int)ceil(log(info.unit/s) / log(10));
+  if (potrace_info.unit != 0.0 && s != 0.0) {
+    d = (int)ceil(log(potrace_info.unit/s) / log(10));
   } else {
     d = 0;
   }

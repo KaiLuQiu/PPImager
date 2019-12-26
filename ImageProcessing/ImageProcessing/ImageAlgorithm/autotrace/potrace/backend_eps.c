@@ -80,9 +80,9 @@ static int shipcom(char *fmt, ...) {
 
 /* set all callback functions */
 static void eps_callbacks(FILE *fout) {
-  if (info.compress && info.pslevel==2) {
+  if (potrace_info.compress && potrace_info.pslevel==2) {
     xship = lzw_xship;
-  } else if (info.compress && info.pslevel==3) {
+  } else if (potrace_info.compress && potrace_info.pslevel==3) {
     xship = flate_xship;
   } else {
     xship = dummy_xship;
@@ -97,8 +97,8 @@ static void eps_callbacks(FILE *fout) {
 static inline point_t unit(dpoint_t p) {
   point_t q;
 
-  q.x = (long)(floor(p.x*info.unit+.5));
-  q.y = (long)(floor(p.y*info.unit+.5));
+  q.x = (long)(floor(p.x*potrace_info.unit+.5));
+  q.y = (long)(floor(p.y*potrace_info.unit+.5));
   return q;
 }
 
@@ -189,7 +189,7 @@ static void eps_linewidth(double w) {
     return;
   }
   eps_width = w;
-  ship("%f setlinewidth\n", w * info.unit);
+  ship("%f setlinewidth\n", w * potrace_info.unit);
 }
 
 /* ---------------------------------------------------------------------- */
@@ -304,7 +304,7 @@ static int eps_path_short(privcurve_t *curve) {
 }
 
 static int eps_path(privcurve_t *curve) {
-  if (info.longcoding==0 && curve->alphacurve) {
+  if (potrace_info.longcoding==0 && curve->alphacurve) {
     return eps_path_short(curve);
   } else {
     return eps_path_long(curve);
@@ -446,8 +446,8 @@ static char *debugmacros =
 static int render0(potrace_path_t *plist) {
   potrace_path_t *p;
 
-  if (info.longcoding) {
-    eps_setcolor(info.color);
+  if (potrace_info.longcoding) {
+    eps_setcolor(potrace_info.color);
     list_forall (p, plist) {
       eps_path(p->priv->fcurve);
       ship("closepath\n");
@@ -472,11 +472,11 @@ static int render0(potrace_path_t *plist) {
 static int render0_opaque(potrace_path_t *plist) {
   potrace_path_t *p;
   
-  if (info.longcoding) {
+  if (potrace_info.longcoding) {
     list_forall (p, plist) {
       eps_path(p->priv->fcurve);
       ship("closepath\n");
-      eps_setcolor(p->sign=='+' ? info.color : info.fillcolor);
+      eps_setcolor(p->sign=='+' ? potrace_info.color : potrace_info.fillcolor);
       ship("fill\n");
     }
   } else {
@@ -561,7 +561,7 @@ static int render2(potrace_path_t *plist) {
     ship("closepath\n");
     ship("stroke\n");
 
-    if (info.param->opticurve && info.debug == 3) {
+    if (potrace_info.param->opticurve && potrace_info.debug == 3) {
 
       /* output opticurve */
       eps_linewidth(.05);
@@ -620,7 +620,7 @@ static int render_debug(potrace_path_t *plist) {
     ship("closepath\n");
     ship("stroke\n");
     
-    if (info.param->opticurve) {
+    if (potrace_info.param->opticurve) {
 
       /* output the opti-verteces polygon */
       eps_polygon(&p->priv->ocurve, green);
@@ -652,9 +652,9 @@ static int render_debug(potrace_path_t *plist) {
 static int eps_render(potrace_path_t *plist) {
   int r;
   
-  switch (info.debug) {
+  switch (potrace_info.debug) {
   case 0:
-    if (info.opaque) {
+    if (potrace_info.opaque) {
       r = render0_opaque(plist);
     } else {
       r = render0(plist);
@@ -679,13 +679,13 @@ static int eps_render(potrace_path_t *plist) {
 static int eps_init(imginfo_t *imginfo) {
   double origx = imginfo->trans.orig[0] + imginfo->lmar;
   double origy = imginfo->trans.orig[1] + imginfo->bmar;
-  double scalex = imginfo->trans.scalex / info.unit;
-  double scaley = imginfo->trans.scaley / info.unit;
+  double scalex = imginfo->trans.scalex / potrace_info.unit;
+  double scaley = imginfo->trans.scaley / potrace_info.unit;
   char *c0, *c1;
 
   shipcom("%%!PS-Adobe-3.0 EPSF-3.0\n");
   shipcom("%%%%Creator: \"POTRACE\" \"VERSION\", written by Peter Selinger 2001-2013\n");
-  shipcom("%%%%LanguageLevel: %d\n", info.pslevel);
+  shipcom("%%%%LanguageLevel: %d\n", potrace_info.pslevel);
   shipcom("%%%%BoundingBox: 0 0 %.0f %.0f\n", 
 	  ceil(imginfo->trans.bb[0]+imginfo->lmar+imginfo->rmar),
 	  ceil(imginfo->trans.bb[1]+imginfo->tmar+imginfo->bmar));
@@ -697,9 +697,9 @@ static int eps_init(imginfo_t *imginfo) {
   
   shipcom("%%%%Page: 1 1\n");
   ship("save\n");
-  if (!info.longcoding) {
-    c0 = strdup(eps_colorstring(info.color));
-    c1 = strdup(eps_colorstring(info.fillcolor));
+  if (!potrace_info.longcoding) {
+    c0 = strdup(eps_colorstring(potrace_info.color));
+    c1 = strdup(eps_colorstring(potrace_info.fillcolor));
     if (!c0 || !c1) {
       free(c0);
       free(c1);
@@ -709,14 +709,14 @@ static int eps_init(imginfo_t *imginfo) {
     free(c0);
     free(c1);
   }
-  if (info.debug) {
-    ship(debugmacros, info.unit);
+  if (potrace_info.debug) {
+    ship(debugmacros, potrace_info.unit);
   }
   if (origx != 0 || origy != 0) {
     ship("%f %f translate\n", origx, origy);
   }
-  if (info.angle != 0) {
-    ship("%.2f rotate\n", info.angle);
+  if (potrace_info.angle != 0) {
+    ship("%.2f rotate\n", potrace_info.angle);
   }
   ship("%f %f scale\n", scalex, scaley);
 
@@ -760,15 +760,15 @@ int init_ps(FILE *fout) {
 
   shipcom("%%!PS-Adobe-3.0\n");
   shipcom("%%%%Creator: \"POTRACE\" \"VERSION\", written by Peter Selinger 2001-2013\n");
-  shipcom("%%%%LanguageLevel: %d\n", info.pslevel);
-  shipcom("%%%%BoundingBox: 0 0 %d %d\n", info.paperwidth, info.paperheight);
+  shipcom("%%%%LanguageLevel: %d\n", potrace_info.pslevel);
+  shipcom("%%%%BoundingBox: 0 0 %d %d\n", potrace_info.paperwidth, potrace_info.paperheight);
   shipcom("%%%%Pages: (atend)\n");
   shipcom("%%%%EndComments\n");
-  if (!info.longcoding || info.debug) {
+  if (!potrace_info.longcoding || potrace_info.debug) {
     shipcom("%%%%BeginSetup\n");
-    if (!info.longcoding) {
-      c0 = strdup(eps_colorstring(info.color));
-      c1 = strdup(eps_colorstring(info.fillcolor));
+    if (!potrace_info.longcoding) {
+      c0 = strdup(eps_colorstring(potrace_info.color));
+      c1 = strdup(eps_colorstring(potrace_info.fillcolor));
       if (!c0 || !c1) {
 	free(c0);
 	free(c1);
@@ -778,8 +778,8 @@ int init_ps(FILE *fout) {
       free(c0);
       free(c1);
     }
-    if (info.debug) {
-      ship(debugmacros, info.unit);
+    if (potrace_info.debug) {
+      ship(debugmacros, potrace_info.unit);
     }
     shipcom("%%%%EndSetup\n");
   }
@@ -802,8 +802,8 @@ int term_ps(FILE *fout) {
 static void eps_pageinit_ps(imginfo_t *imginfo) {
   double origx = imginfo->trans.orig[0] + imginfo->lmar;
   double origy = imginfo->trans.orig[1] + imginfo->bmar;
-  double scalex = imginfo->trans.scalex / info.unit;
-  double scaley = imginfo->trans.scaley / info.unit;
+  double scalex = imginfo->trans.scalex / potrace_info.unit;
+  double scaley = imginfo->trans.scaley / potrace_info.unit;
 
   eps_pagenumber++;
   eps_color = -1;
@@ -814,8 +814,8 @@ static void eps_pageinit_ps(imginfo_t *imginfo) {
   if (origx != 0 || origy != 0) {
     ship("%f %f translate\n", origx, origy);
   }
-  if (info.angle != 0) {
-    ship("%.2f rotate\n", info.angle);
+  if (potrace_info.angle != 0) {
+    ship("%.2f rotate\n", potrace_info.angle);
   }
   ship("%f %f scale\n", scalex, scaley);
 }

@@ -119,7 +119,7 @@ static int shipclear(char *fmt, ...) {
 /* set all callback functions */
 static void pdf_callbacks(FILE *fout) {
 
-  if (info.compress) {
+  if (potrace_info.compress) {
     xship = pdf_xship;
   } else {
     xship = dummy_xship;
@@ -134,8 +134,8 @@ static void pdf_callbacks(FILE *fout) {
 static inline point_t unit(dpoint_t p) {
   point_t q;
 
-  q.x = (long)(floor(p.x*info.unit+.5));
-  q.y = (long)(floor(p.y*info.unit+.5));
+  q.x = (long)(floor(p.x*potrace_info.unit+.5));
+  q.y = (long)(floor(p.y*potrace_info.unit+.5));
   return q;
 }
 
@@ -228,7 +228,7 @@ static int pdf_path(potrace_curve_t *curve) {
 static int render0(potrace_path_t *plist) {
   potrace_path_t *p;
 
-  pdf_setcolor(info.color);
+  pdf_setcolor(potrace_info.color);
   list_forall (p, plist) {
     pdf_path(&p->curve);
     ship("h\n");
@@ -246,7 +246,7 @@ static int render0_opaque(potrace_path_t *plist) {
   list_forall (p, plist) {
     pdf_path(&p->curve);
     ship("h\n");
-    pdf_setcolor(p->sign=='+' ? info.color : info.fillcolor);
+    pdf_setcolor(p->sign=='+' ? potrace_info.color : potrace_info.fillcolor);
     ship("f\n");
   }
   return 0;
@@ -255,7 +255,7 @@ static int render0_opaque(potrace_path_t *plist) {
 /* select the appropriate rendering function from above */
 static int pdf_render(potrace_path_t *plist)
 {
-  if (info.opaque) {
+  if (potrace_info.opaque) {
     return render0_opaque(plist);
   }
   return render0(plist);
@@ -314,7 +314,7 @@ int term_pdf(FILE *fout)
 	for (i = 0; i < nxref; i++)
 		shipclear("%0.10d 00000 n \n", xref.data[i]);
 
-	shipclear("trailer\n<</Size %d/Root 1 0 R/Info 2 0 R>>\n", nxref + 1);
+	shipclear("trailer\n<</Size %d/Root 1 0 R/potrace_info 2 0 R>>\n", nxref + 1);
 	shipclear("startxref\n%d\n%%%%EOF\n", startxref);
 
 	fflush(fout);
@@ -328,10 +328,10 @@ static void pdf_pageinit(imginfo_t *imginfo, int largebbox)
 {
 	double origx = imginfo->trans.orig[0] + imginfo->lmar;
 	double origy = imginfo->trans.orig[1] + imginfo->bmar;
-	double dxx = imginfo->trans.x[0] / info.unit;
-	double dxy = imginfo->trans.x[1] / info.unit;
-	double dyx = imginfo->trans.y[0] / info.unit;
-	double dyy = imginfo->trans.y[1] / info.unit;
+	double dxx = imginfo->trans.x[0] / potrace_info.unit;
+	double dxy = imginfo->trans.x[1] / potrace_info.unit;
+	double dyx = imginfo->trans.y[0] / potrace_info.unit;
+	double dyy = imginfo->trans.y[1] / potrace_info.unit;
 
 	double pagew = imginfo->trans.bb[0]+imginfo->lmar+imginfo->rmar;
 	double pageh = imginfo->trans.bb[1]+imginfo->tmar+imginfo->bmar;
@@ -342,7 +342,7 @@ static void pdf_pageinit(imginfo_t *imginfo, int largebbox)
 	shipclear("%d 0 obj\n", nxref);
 	shipclear("<</Type/Page/Parent 3 0 R/Resources<</ProcSet[/PDF]>>");
 	if (largebbox) {
-	  shipclear("/MediaBox[0 0 %d %d]", info.paperwidth, info.paperheight);
+	  shipclear("/MediaBox[0 0 %d %d]", potrace_info.paperwidth, potrace_info.paperheight);
 	} else {
 	  shipclear("/MediaBox[0 0 %f %f]", pagew, pageh);
 	}
@@ -353,7 +353,7 @@ static void pdf_pageinit(imginfo_t *imginfo, int largebbox)
 
 	intarray_set(&xref, nxref++, outcount);
 	shipclear("%d 0 obj\n", nxref);
-	if (info.compress)
+	if (potrace_info.compress)
 		shipclear("<</Filter/FlateDecode/Length %d 0 R>>\n", nxref + 1);
 	else
 		shipclear("<</Length %d 0 R>>\n", nxref + 1);

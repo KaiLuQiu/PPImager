@@ -16,7 +16,7 @@ struct trans_s {
   double orig[2];  /* origin relative to bounding box */
   double x[2];     /* basis vector for the "x" direction */
   double y[2];     /* basis vector for the "y" direction */
-  double scalex, scaley;  /* redundant info for some backends' benefit */
+  double scalex, scaley;  /* redundant potrace_info for some backends' benefit */
 };
 typedef struct trans_s trans_t;
 

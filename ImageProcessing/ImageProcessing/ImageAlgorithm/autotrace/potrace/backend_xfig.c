@@ -178,7 +178,7 @@ static int xfig_get_depth(potrace_path_t *plist) {
 int page_xfig(FILE *fout, potrace_path_t *plist, imginfo_t *imginfo) {
   trans_t t;
   double origx = imginfo->trans.orig[0] + imginfo->lmar;
-  double origy = - imginfo->trans.orig[1] - imginfo->bmar + info.paperheight;
+  double origy = - imginfo->trans.orig[1] - imginfo->bmar + potrace_info.paperheight;
   char *formatname;
   int best, penalty;
   pageformat_t *f;
@@ -204,7 +204,7 @@ int page_xfig(FILE *fout, potrace_path_t *plist, imginfo_t *imginfo) {
   /* find closest page format */
   for (i=0; pageformat[i].name; i++) {
     f = &pageformat[i];
-    if (f->w >= info.paperwidth-1 && f->h >= info.paperheight-1) {
+    if (f->w >= potrace_info.paperwidth-1 && f->h >= potrace_info.paperheight-1) {
       penalty = f->w + f->h;
       if (best == -1 || penalty < best) {
 	best = penalty;
@@ -224,8 +224,8 @@ int page_xfig(FILE *fout, potrace_path_t *plist, imginfo_t *imginfo) {
   fprintf(fout, "Single\n");
   fprintf(fout, "-2\n");
   fprintf(fout, "1200 2\n");  /* 1200 pixels per inch */
-  fprintf(fout, "0 32 #%06x\n", info.color);
-  fprintf(fout, "0 33 #%06x\n", info.fillcolor);
+  fprintf(fout, "0 32 #%06x\n", potrace_info.color);
+  fprintf(fout, "0 33 #%06x\n", potrace_info.fillcolor);
   fprintf(fout, "6 %d %d %d %d\n", x0-75, y1-35, x1+75, y0+35); /* bounding box */
 
   /* determine depth of the tree */

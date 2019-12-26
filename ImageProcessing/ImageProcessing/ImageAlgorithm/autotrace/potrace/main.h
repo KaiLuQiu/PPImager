@@ -93,7 +93,7 @@ struct info_s {
 };
 typedef struct info_s info_t;
 
-extern info_t info;
+extern info_t potrace_info;
 
 /* structure to hold per-image information, set e.g. by calc_dimensions */
 struct imginfo_s {

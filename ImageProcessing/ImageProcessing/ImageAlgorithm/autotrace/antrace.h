@@ -34,8 +34,7 @@
 #include "trans.h"
 #include "curve.h"
 // 定义全局变量
-//struct info_s info;
-struct info_s antrace_info;
+struct info_s potrace_info;
 
 #define UNDEF ((double)(1e30))
 
@@ -74,12 +73,12 @@ public:
     antrace();
     ~antrace();
     bool traceImage(unsigned char *data, int width, int height, char * path);
-    int backend_lookup(char *name, backend_t **bp);
 private:
     void calc_dimensions(imginfo_t *imginfo, potrace_path_t *plist);
     void initInfo(char const* filetype);
     bool saveToFile(char* path, int width, int height, const char* filetype);
-    
+    int backend_lookup(char *name, backend_t **bp);
+
     double double_of_dim(dim_t d, double def) {
         if (d.d) {
             return d.x * d.d;
@@ -87,11 +86,10 @@ private:
             return d.x * def;
         }
     }
-//    info_s antrace_info;
-
     potrace_state_t* s_state;
 };
 
 
 #endif
+
 

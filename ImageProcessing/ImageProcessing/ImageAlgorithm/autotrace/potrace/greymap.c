@@ -515,7 +515,7 @@ static int gm_readbody_bmp(FILE *f, greymap_t **gmp) {
   TRY(bmp_readint(f, 4, &bmpinfo.reserved));
   TRY(bmp_readint(f, 4, &bmpinfo.DataOffset));
 
-  /* info header */
+  /* potrace_info header */
   TRY(bmp_readint(f, 4, &bmpinfo.InfoSize));
   if (bmpinfo.InfoSize == 40 || bmpinfo.InfoSize == 64
       || bmpinfo.InfoSize == 108 || bmpinfo.InfoSize == 124) {

@@ -52,7 +52,7 @@ static inline void progress_subrange_start(double a, double b, const progress_t 
   max = prog->min * (1-b) + prog->max * b;
 
   if (max - min < prog->epsilon) {
-    sub->callback = NULL;    /* no further progress info in subrange */
+    sub->callback = NULL;    /* no further progress potrace_info in subrange */
     sub->b = b;
     return;
   }
