@@ -8,6 +8,8 @@
 //
 
 #include "antrace.h"
+// 定义全局变量
+struct info_s potrace_info;
 
 antrace::antrace() {
     s_state = NULL;
