@@ -8,6 +8,10 @@
 //
 
 #include "antrace.h"
+#include "ImageCommon.h"
+#include "nanosvg/nanosvg.h"
+#include "nanosvg/nanosvgrast.h"
+
 // 定义全局变量
 struct info_s potrace_info;
 
@@ -246,7 +250,7 @@ void antrace::initInfo(char const* filetype)
 }
 
 
-bool antrace::traceImage(unsigned char *data, int width, int height, char* path)
+bool antrace::traceImage(unsigned char *data, int width, int height, const char* path)
 {
     bool ret = false;
     potrace_param_t* param_t = potrace_param_default();
@@ -296,13 +300,14 @@ bool antrace::traceImage(unsigned char *data, int width, int height, char* path)
     return ret;
 }
 
-bool antrace::saveToFile(char* path, int width, int height, const char* filetype)
+bool antrace::saveToFile(const char* path, int width, int height, const char* filetype)
 {
     imginfo_t imginfo;
     imginfo.pixwidth = width;
     imginfo.pixheight = height;
     initInfo(filetype);
     calc_dimensions(&imginfo, s_state->plist);
+
     FILE *f = fopen(path, "w+");
     if (f) {
          struct backend_s *b = potrace_info.backend;
@@ -312,8 +317,8 @@ bool antrace::saveToFile(char* path, int width, int height, const char* filetype
                  return false;
              }
          }
-         b->page_f(f, s_state->plist, &imginfo);
-         if (b->term_f) {
+        b->page_f(f, s_state->plist, &imginfo);
+        if (b->term_f) {
              if(0 != b->term_f(f)) {
                  fclose(f);
                  return false;
@@ -321,6 +326,37 @@ bool antrace::saveToFile(char* path, int width, int height, const char* filetype
          }
          fclose(f);
      }
+
     return true;
 }
 
+unsigned char* antrace::readBufferFromFile(const char* path, int& width, int& height)
+{
+    FILE *f = fopen(path, "rb");
+    
+    fseek(f,0,SEEK_SET);
+    long begin = ftell(f);
+    fseek(f,0,SEEK_END);
+    long end = ftell(f);
+    long filesize = end - begin;
+    fseek(f,0,SEEK_SET);
+    char* buffer = (char*)malloc(filesize * sizeof(char));
+    memset(buffer, 0, filesize * sizeof(char));
+    int size = fread(buffer, sizeof(char), filesize, f);
+    NSVGimage* svgImage = nsvgParse(buffer, "px", 96.0f);
+    
+    // ps: potrace 也会改变输出图像的大小 ！
+    int svgImageWidth = (int)svgImage->width;
+    int svgImageHeight = (int)svgImage->height;
+//    unsigned char* svgBuffer = new unsigned char[svgImageWidth * svgImageHeight * 4];
+    unsigned char* svgBuffer = (unsigned char*)malloc(svgImageWidth * svgImageHeight * 4);
+    NSVGrasterizer *svgRast = nsvgCreateRasterizer();
+    // 因为这里仅能支持等比例缩放，所以这里不缩放
+    nsvgRasterize(svgRast, svgImage, 0, 0, 1., svgBuffer, svgImageWidth, svgImageHeight, svgImageWidth * 4);
+    
+    width = svgImageWidth;
+    height = svgImageHeight;
+    fclose(f);
+    SAFE_FREE(buffer);
+    return svgBuffer;
+}

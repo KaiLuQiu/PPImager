@@ -1,4 +1,3 @@
-
 //
 //  antrace.h
 //  ImageProcessing
@@ -17,11 +16,12 @@ class antrace {
 public:
     antrace();
     ~antrace();
-    bool traceImage(unsigned char *data, int width, int height, char * path);
+    bool traceImage(unsigned char *data, int width, int height, const char * path);
+    unsigned char* readBufferFromFile(const char* path, int& width, int& height);
 private:
     void calc_dimensions(imginfo_t *imginfo, potrace_path_t *plist);
     void initInfo(char const* filetype);
-    bool saveToFile(char* path, int width, int height, const char* filetype);
+    bool saveToFile(const char* path, int width, int height, const char* filetype);
     int backend_lookup(char *name, backend_t **bp);
 
     double double_of_dim(dim_t d, double def) {

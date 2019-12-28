@@ -17,6 +17,9 @@
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
 
+#define NANOSVGRAST_IMPLEMENTATION
+#define NANOSVG_IMPLEMENTATION
+
 #define NS_IMAGE_BEGIN namespace image {
 #define NS_IMAGE_END  }
 
