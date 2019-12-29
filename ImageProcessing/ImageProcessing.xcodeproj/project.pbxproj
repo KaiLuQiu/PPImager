@@ -151,6 +151,9 @@
 		36FAD27023B25CB5007B4144 /* render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render.h; sourceTree = "<group>"; };
 		36FAD27123B25CB5007B4144 /* antrace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = antrace.cpp; sourceTree = "<group>"; };
 		36FAD28A23B3977F007B4144 /* antrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = antrace.h; sourceTree = "<group>"; };
+		36FAD28B23B434AD007B4144 /* antraceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = antraceInfo.h; path = ImageProcessing/ImageAlgorithm/autotrace/antraceInfo.h; sourceTree = SOURCE_ROOT; };
+		36FAD2B123B5C49B007B4144 /* nanosvg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanosvg.h; sourceTree = "<group>"; };
+		36FAD2B223B5C49B007B4144 /* nanosvgrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nanosvgrast.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,9 +344,11 @@
 		36FAD24123B25CB5007B4144 /* autotrace */ = {
 			isa = PBXGroup;
 			children = (
+				36FAD2B023B5C49B007B4144 /* nanosvg */,
 				36FAD24223B25CB5007B4144 /* potrace */,
 				36FAD27123B25CB5007B4144 /* antrace.cpp */,
 				36FAD28A23B3977F007B4144 /* antrace.h */,
+				36FAD28B23B434AD007B4144 /* antraceInfo.h */,
 			);
 			path = autotrace;
 			sourceTree = "<group>";
@@ -399,6 +404,15 @@
 				36FAD27023B25CB5007B4144 /* render.h */,
 			);
 			path = potrace;
+			sourceTree = "<group>";
+		};
+		36FAD2B023B5C49B007B4144 /* nanosvg */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD2B123B5C49B007B4144 /* nanosvg.h */,
+				36FAD2B223B5C49B007B4144 /* nanosvgrast.h */,
+			);
+			path = nanosvg;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -745,6 +759,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ImageProcessing/ImageCommon/jpeg/prebuilt/ios",
+					"$(PROJECT_DIR)/ImageProcessing/ImageCommon/jpeg/prebuilt/android/armeabi-v7a",
+					"$(PROJECT_DIR)/ImageProcessing/ImageCommon/jpeg/prebuilt/android/x86",
+					"$(PROJECT_DIR)/ImageProcessing/ImageCommon/jpeg/prebuilt/android/arm64-v8a",
+					"$(PROJECT_DIR)/ImageProcessing/ImageCommon/jpeg/prebuilt/android/armeabi",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = KevinQiu.ImageProcessing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -764,6 +786,14 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ImageProcessing/ImageCommon/jpeg/prebuilt/ios",
+					"$(PROJECT_DIR)/ImageProcessing/ImageCommon/jpeg/prebuilt/android/armeabi-v7a",
+					"$(PROJECT_DIR)/ImageProcessing/ImageCommon/jpeg/prebuilt/android/x86",
+					"$(PROJECT_DIR)/ImageProcessing/ImageCommon/jpeg/prebuilt/android/arm64-v8a",
+					"$(PROJECT_DIR)/ImageProcessing/ImageCommon/jpeg/prebuilt/android/armeabi",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KevinQiu.ImageProcessing;
 				PRODUCT_NAME = "$(TARGET_NAME)";

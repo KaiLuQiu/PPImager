@@ -265,14 +265,14 @@ bool antrace::traceImage(unsigned char *data, int width, int height, const char*
     unsigned char *pdata = data;
     for (int i = 0; i < height; i++) {
        for (int j = 0; j < width; j++) {
-            int32_t src_red = pdata[0];
-            int32_t src_green = pdata[1];
-            int32_t src_blue = pdata[2];
-            int32_t src_alpha = pdata[3];
+            int32_t src_red = pdata[RED];
+            int32_t src_green = pdata[GREEN];
+            int32_t src_blue = pdata[BLUE];
+            int32_t src_alpha = pdata[ALPHA];
 
             int32_t dst_color = (kRedRatio * src_red + kGreenRatio * src_green +
                     kBlueRatio * src_blue) >> kShiftBits;
-            if (dst_color > 128) {
+            if (dst_color > 200) {
               BM_PUT(bmp_t, j, height - 1 - i, 1);
             }
             else
@@ -341,21 +341,47 @@ unsigned char* antrace::readBufferFromFile(const char* path, int& width, int& he
     long filesize = end - begin;
     fseek(f,0,SEEK_SET);
     char* buffer = (char*)malloc(filesize * sizeof(char));
+    if (NULL == buffer) {
+        printf("antrace: buffer is NULL!!!\n");
+        return NULL;
+    }
     memset(buffer, 0, filesize * sizeof(char));
     int size = fread(buffer, sizeof(char), filesize, f);
-    NSVGimage* svgImage = nsvgParse(buffer, "px", 96.0f);
-    
-    // ps: potrace 也会改变输出图像的大小 ！
-    int svgImageWidth = (int)svgImage->width;
-    int svgImageHeight = (int)svgImage->height;
-//    unsigned char* svgBuffer = new unsigned char[svgImageWidth * svgImageHeight * 4];
-    unsigned char* svgBuffer = (unsigned char*)malloc(svgImageWidth * svgImageHeight * 4);
+    NSVGimage* nsvgImage = nsvgParse(buffer, "px", 96.0f);
+    if (NULL == nsvgImage) {
+        printf("antrace: nsvgImage is NULL!!!\n");
+        return NULL;
+    }
+    int nsvgImageWidth = (int)nsvgImage->width;
+    int nsvgImageHeight = (int)nsvgImage->height;
+    unsigned char* svgBuffer = (unsigned char*)malloc(nsvgImageWidth * nsvgImageHeight * 4);
+    if (NULL == svgBuffer) {
+        printf("antrace: svgBuffer is NULL!!!\n");
+        return NULL;
+    }
     NSVGrasterizer *svgRast = nsvgCreateRasterizer();
-    // 因为这里仅能支持等比例缩放，所以这里不缩放
-    nsvgRasterize(svgRast, svgImage, 0, 0, 1., svgBuffer, svgImageWidth, svgImageHeight, svgImageWidth * 4);
+    if (NULL == svgRast) {
+        printf("antrace: create svgRast is fail!!!\n");
+        return NULL;
+    }
+    nsvgRasterize(svgRast, nsvgImage, 0, 0, 1., svgBuffer, nsvgImageWidth, nsvgImageHeight, nsvgImageWidth * 4);
     
-    width = svgImageWidth;
-    height = svgImageHeight;
+    // 像素预乘
+    unsigned char* pdata = svgBuffer;
+    for (int i = 0; i < nsvgImageWidth; i++) {
+        for(int j = 0; j < nsvgImageHeight; j++) {
+            if(pdata[ALPHA] != 255) {
+                pdata[RED] = pdata[RED] * pdata[ALPHA] / 255;
+                pdata[GREEN] = pdata[GREEN] * pdata[ALPHA] / 255;
+                pdata[BLUE] = pdata[BLUE] * pdata[ALPHA] / 255;
+            }
+            pdata[ALPHA] = 255;
+            pdata += 4;
+        }
+    }
+    
+    width = nsvgImageWidth;
+    height = nsvgImageHeight;
     fclose(f);
     SAFE_FREE(buffer);
     return svgBuffer;

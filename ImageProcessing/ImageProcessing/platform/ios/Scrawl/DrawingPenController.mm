@@ -10,6 +10,9 @@
 #import "DrawView.h"
 #include "GLProgramManager.h"
 #include "GLTools.h"
+#include "antrace.h"
+#import "ImageHelper.h"
+
 
 @interface DrawingPenController ()
     @property(nonatomic, assign)    DrawView        *penView;
@@ -20,24 +23,16 @@
 
 @implementation DrawingPenController
 
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
     // 创建GL环境
     [self createGLContext];
     
     // Do any additional setup after loading the view.
     _penView = (DrawView *)self.view;
-
-    NSString *vertFile = [[NSBundle mainBundle] pathForResource:@"vert.glsl" ofType:nil];
-    NSString *fragFile = [[NSBundle mainBundle] pathForResource:@"frag.glsl" ofType:nil];
-
-    GLuint program = image::GLProgramManager::getIntanse()->createGLProgramByPath([vertFile UTF8String], [fragFile UTF8String]);
-    GLuint program2 = image::GLProgramManager::getIntanse()->createGLProgramByPath([vertFile UTF8String], [fragFile UTF8String]);
-    GLuint program3 = image::GLProgramManager::getIntanse()->createGLProgramByPath([vertFile UTF8String], [fragFile UTF8String]);
-
 }
 
-- (void)createGLContext
+- (void) createGLContext
 {
     // 设置OpenGLES的版本为2.0 当然还可以选择1.0和最新的3.0的版本，以后我们会讲到2.0与3.0的差异，目前为了兼容性选择2.0的版本
     EAGLRenderingAPI api = kEAGLRenderingAPIOpenGLES2;
@@ -54,10 +49,28 @@
     }
 }
 
-- (void)cancleGLContext
+- (void) cancleGLContext
 {
     [EAGLContext setCurrentContext:nil];
     _context = nil;
 }
 
+- (UIImage *) potraceAndSvgEffect:(UIImage *)image
+{
+    unsigned char *srcData = [ImageHelper convertUIImageToBitmapRGBA8:image];
+    int srcWidth = image.size.width;
+    int srcHeight = image.size.height;
+
+    // 文件1，使用c标准库进行创建
+    const char *filePath = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Potrace_file.data"] cStringUsingEncoding:NSUTF8StringEncoding];
+
+    antrace *potraceObject = new antrace();
+    potraceObject->traceImage(srcData, srcWidth, srcHeight, filePath);
+    int dstWidth;
+    int dstHeight;
+    unsigned char* dstData = potraceObject->readBufferFromFile(filePath, dstWidth, dstHeight);
+    UIImage * resultImage = [ImageHelper convertBitmapRGBA8ToUIImage:dstData withWidth:dstWidth withHeight:dstHeight];
+    SAFE_DELETE(potraceObject);
+    return resultImage;
+}
 @end

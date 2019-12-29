@@ -20,6 +20,13 @@
 #define NANOSVGRAST_IMPLEMENTATION
 #define NANOSVG_IMPLEMENTATION
 
+#define RED     0
+#define GREEN   1
+#define BLUE    2
+#define ALPHA   3
+
+
+
 #define NS_IMAGE_BEGIN namespace image {
 #define NS_IMAGE_END  }
 

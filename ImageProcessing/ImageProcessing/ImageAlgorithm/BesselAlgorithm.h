@@ -16,9 +16,18 @@
 NS_IMAGE_BEGIN
 class BesselAlgorithm {
 public:
+    /*
+     * X(n+1) = Xn - F(Xn)/F'(Xn) 长度函数反函数，使用牛顿切线法求解
+     */
     double InvertL(float t, float l, float A, float B, float C);
 private:
+   /*
+    * s(t_) = Sqrt[A*t*t+B*t+C]
+    */
     double S(float t, float A, float B, float C);
+   /*
+    * 长度函数
+    */
     double L(float t, float A, float B, float C);
 };
 

@@ -10,6 +10,7 @@
 
 @interface DrawingPenController : UIViewController
 
+- (UIImage *) potraceAndSvgEffect:(UIImage *)image;
 
 @end
 

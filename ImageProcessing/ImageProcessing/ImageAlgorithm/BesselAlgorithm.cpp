@@ -13,8 +13,9 @@
 #include <stdio.h>
 #include <cmath>
 NS_IMAGE_BEGIN
+
 /*
- *s(t_) = Sqrt[A*t*t+B*t+C]
+ * s(t_) = Sqrt[A*t*t+B*t+C]
  */
 double BesselAlgorithm::S(float t, float A, float B, float C)
 {
@@ -25,7 +26,6 @@ double BesselAlgorithm::S(float t, float A, float B, float C)
 /*
  * 长度函数
  */
-
 double BesselAlgorithm::L(float t, float A, float B, float C)
 {
     float temp1 = sqrt(C + t * (B + A * t));
