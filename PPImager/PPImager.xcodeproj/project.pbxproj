@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36052C3E2413D98700934B63 /* CircularQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36052C3D2413D98700934B63 /* CircularQueue.cpp */; };
 		3696865423D339B00022BB91 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3696865323D339B00022BB91 /* Triangle.cpp */; };
 		36C9001E238EB89E007C4F89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C9001D238EB89E007C4F89 /* AppDelegate.m */; };
 		36C90021238EB89E007C4F89 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C90020238EB89E007C4F89 /* ViewController.m */; };
@@ -68,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36052C3C2413D98700934B63 /* CircularQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularQueue.h; sourceTree = "<group>"; };
+		36052C3D2413D98700934B63 /* CircularQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircularQueue.cpp; sourceTree = "<group>"; };
 		3696865223D339B00022BB91 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triangle.h; sourceTree = "<group>"; };
 		3696865323D339B00022BB91 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
 		36C90019238EB89E007C4F89 /* PPImager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPImager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +188,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36052C372413D80100934B63 /* effectPen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = effectPen;
+			sourceTree = "<group>";
+		};
+		36052C382413D8F600934B63 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				36052C3D2413D98700934B63 /* CircularQueue.cpp */,
+				36052C3C2413D98700934B63 /* CircularQueue.h */,
+			);
+			name = Queue;
+			path = PPImager/platform/ios/utils/Queue;
+			sourceTree = SOURCE_ROOT;
+		};
 		36C90010238EB89E007C4F89 = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +284,7 @@
 		36FAD19023AE4CFD007B4144 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				36052C372413D80100934B63 /* effectPen */,
 				36FAD19423AE4CFD007B4144 /* Scrawl */,
 				36FAD19123AE4CFD007B4144 /* utils */,
 			);
@@ -273,6 +294,7 @@
 		36FAD19123AE4CFD007B4144 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				36052C382413D8F600934B63 /* Queue */,
 				36FAD19223AE4CFD007B4144 /* ImageHelper.h */,
 				36FAD19323AE4CFD007B4144 /* ImageHelper.m */,
 			);
@@ -556,6 +578,7 @@
 				36FAD27B23B25CB5007B4144 /* flate.c in Sources */,
 				36FAD1B223AF0735007B4144 /* md5.cpp in Sources */,
 				36FAD27923B25CB5007B4144 /* backend_geojson.c in Sources */,
+				36052C3E2413D98700934B63 /* CircularQueue.cpp in Sources */,
 				36FAD27C23B25CB5007B4144 /* progress_bar.c in Sources */,
 				36FAD28623B25CB5007B4144 /* antrace.cpp in Sources */,
 				36FAD27623B25CB5007B4144 /* lzw.c in Sources */,
